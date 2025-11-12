@@ -61,7 +61,7 @@ jobs:
         with:
           token: ${{ steps.app-token.outputs.token }}
           files: |
-            meme-stella-*
+            meme-stella-*/meme-stella-*
           tag_name: ${{ needs.release.outputs.tag_name }}
 
 
