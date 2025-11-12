@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/puniyu/meme-stella/compare/v0.1.2...v0.1.3) (2025-11-12)
+
+
+### 🐛 错误修复
+
+* **workflow:** 修复发布条件判断逻辑 ([3ed2aa4](https://github.com/puniyu/meme-stella/commit/3ed2aa402aaa0daf0258d9934a70447bf3837376))
+
 ## [0.1.2](https://github.com/puniyu/meme-stella/compare/v0.1.1...v0.1.2) (2025-11-12)
 
 
