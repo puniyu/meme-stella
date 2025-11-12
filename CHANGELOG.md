@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.6](https://github.com/puniyu/meme-stella/compare/v0.1.5...v0.1.6) (2025-11-12)
+
+
+### 🐛 错误修复
+
+* **release:** 更新发布工作流中的文件路径匹配规则 ([e9ddd99](https://github.com/puniyu/meme-stella/commit/e9ddd99f06a680ef86f942e28a2ba20b60a2e903))
+
 ## [0.1.5](https://github.com/puniyu/meme-stella/compare/v0.1.4...v0.1.5) (2025-11-12)
 
 
