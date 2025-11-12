@@ -3,13 +3,7 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'Cargo.toml'
-      - 'src/**'
   pull_request:
-    paths:
-      - 'Cargo.toml'
-      - 'src/**'
   workflow_dispatch:
 
 
@@ -22,7 +16,8 @@ jobs:
     if: "!startsWith(github.head_ref, 'release-please')"
     runs-on: ubuntu-latest
     outputs:
-      release: ${{ steps.release.outputs.releases_created }}
+      release: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - name: 获取token
         uses: actions/create-github-app-token@v2
@@ -42,5 +37,31 @@ jobs:
   build:
     if: "!startsWith(github.head_ref, 'release-please')"
     uses: ./.github/workflows/build.yaml
+
+  publish:
+    needs: [release, build]
+    if: needs.release.outputs.release
+    runs-on: ubuntu-latest
+    steps:
+      - name: 获取token
+        uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2
+        id: app-token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: 下载构建产物
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          pattern: "meme-stella-*"
+          path: ./
+
+      - name: 发布
+        uses: softprops/action-gh-release@5be0e66d93ac7ed76da52eca8bb058f665c3a5fe # v2
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          files: |
+            meme-stella-*
+          tag_name: ${{ needs.release.outputs.tag_name }}
 
 

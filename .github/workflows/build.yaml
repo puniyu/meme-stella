@@ -4,7 +4,7 @@ on:
   workflow_call:
 
 env:
-  APP_NAME: meme_stella
+  APP_NAME: meme-stella
 
 jobs:
   build_windows:
