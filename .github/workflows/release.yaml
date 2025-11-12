@@ -16,8 +16,8 @@ jobs:
     if: "!startsWith(github.head_ref, 'release-please')"
     runs-on: ubuntu-latest
     outputs:
-      release: ${{ steps.release.outputs.release_created }}
-      tag_name: ${{ steps.release.outputs.tag_name }}
+      release: ${{ steps.release-please.outputs.release_created }}
+      tag_name: ${{ steps.release-please.outputs.tag_name }}
     steps:
       - name: 获取token
         uses: actions/create-github-app-token@v2
@@ -40,7 +40,7 @@ jobs:
 
   publish:
     needs: [release, build]
-    if: needs.release.outputs.release == 'true'
+    if: needs.release.outputs.release
     runs-on: ubuntu-latest
     steps:
       - name: 获取token
