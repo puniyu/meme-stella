@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.7](https://github.com/puniyu/meme-stella/compare/v0.1.6...v0.1.7) (2025-11-12)
+
+
+### 📦️ 构建系统
+
+* **workflows:** 优化构建流程并修复发布文件路径 ([d9a5bb7](https://github.com/puniyu/meme-stella/commit/d9a5bb7c4f06e2d7ccfa1899d98afe5819ff7784))
+
 ## [0.1.6](https://github.com/puniyu/meme-stella/compare/v0.1.5...v0.1.6) (2025-11-12)
 
 

@@ -910,7 +910,7 @@ dependencies = [
 
 [[package]]
 name = "meme_stella"
-version = "0.1.6"
+version = "0.1.7"
 dependencies = [
  "inventory",
  "meme_generator_core",
