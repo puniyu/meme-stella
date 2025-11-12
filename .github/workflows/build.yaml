@@ -32,7 +32,11 @@ jobs:
         run: rustup target add ${{ matrix.platform.target }}
 
       - name: 构建
-        run: cargo build --release --target ${{ matrix.platform.target }}
+        shell: bash
+        run: | 
+          cargo build --release --target ${{ matrix.platform.target }}
+          mv target/${{ matrix.platform.target }}/release/meme_stella.dll target/${{ matrix.platform.target }}/release/meme-stella-${{ matrix.platform.label }}.dll
+          
 
       - name: 上传构建产物
         uses: actions/upload-artifact@v4
@@ -69,7 +73,9 @@ jobs:
         run: rustup target add ${{ matrix.platform.target }}
 
       - name: 构建
-        run: cargo build --release --target ${{ matrix.platform.target }}
+        run: |
+          cargo build --release --target ${{ matrix.platform.target }}
+          mv target/${{ matrix.platform.target }}/release/libmeme_stella.dylib target/${{ matrix.platform.target }}/release/meme-stella-${{ matrix.platform.label }}.dylib
 
       - name: 上传构建产物
         uses: actions/upload-artifact@v4
@@ -109,7 +115,9 @@ jobs:
         run: rustup target add ${{ matrix.platform.target }}
 
       - name: 构建
-        run: cargo build --release --target ${{ matrix.platform.target }}
+        run: |
+          cargo build --release --target ${{ matrix.platform.target }}
+          mv target/${{ matrix.platform.target }}/release/libmeme_stella.so target/${{ matrix.platform.target }}/release/meme-stella-${{ matrix.platform.label }}.so
 
       - name: 上传构建产物
         uses: actions/upload-artifact@v4
